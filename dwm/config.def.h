@@ -23,16 +23,7 @@ static const char *colors[][3]      = {
     /*               fg       bg       border   */
     [SchemeNorm] = { norm_fg, norm_bg, norm_border },
     [SchemeSel]  = { sel_fg,  sel_bg,  sel_border  },
-};                                               
-                                                
-                                                
-                                                
-                                                
-                                       
-                                                   
-                                                    
-                                                    
-  
+};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -89,14 +80,18 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
-static const char *web[]      = { "google-chrome-stable", NULL };
-static const char *volup[]    = { "/home/capn/scripts/audio/vol-up.sh", NULL };
-static const char *voldown[]  = { "/home/capn/scripts/audio/vol-down.sh", NULL };
+static const char *roficmd[]   = { "/home/capn/.config/rofi/launchers/launcher/launcher.sh", NULL };
+static const char *rofigreen[] = { "/home/capn/.config/rofi/launchers/greenclip/launcher.sh", NULL };
+static const char *termcmd[]   = { "kitty", NULL };
+static const char *web[]       = { "google-chrome-stable", NULL };
+static const char *volup[]     = { "/home/capn/scripts/audio/vol-up.sh", NULL };
+static const char *voldown[]   = { "/home/capn/scripts/audio/vol-down.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = roficmd } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_p,      spawn,          {.v = rofigreen } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = web } },
 	{ MODKEY,                       XK_equal,  spawn,          {.v = volup } },
